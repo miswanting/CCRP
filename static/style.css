@@ -1,0 +1,23 @@
+#header {
+    background-color: #91AA9D;
+    text-align: center;
+}
+
+#menu {
+    background-color: #D1DBBD;
+    width: 100px;
+    float: left;
+}
+
+#content {
+    background-color: #FCFFF5;
+    height: 200px;
+    float: left;
+}
+
+#footer {
+    color: #FCFFF5;
+    background-color: #3E606F;
+    clear: both;
+    text-align: center;
+}
