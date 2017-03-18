@@ -13,23 +13,25 @@ a {
 }
 
 #header {
-    width: 70%;
     background-color: #91AA9D;
     text-align: center;
 }
 
 #menu {
-    width: 70%;
+    float: left;
+    width: 30%;
+    height: 700px;
     background-color: #D1DBBD;
 }
 
 #content {
+    float: left;
     width: 70%;
+    height: 700px;
     background-color: #FCFFF5;
 }
 
 #footer {
-    width: 70%;
     color: #FCFFF5;
     background-color: #3E606F;
     clear: both;

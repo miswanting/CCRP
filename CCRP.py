@@ -1,9 +1,13 @@
 # coding=utf-8
+import time
+import random
+import hashlib
 from wifi import Cell, Scheme
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, url_for
 app = Flask(__name__)
+currentPage = 'index.html'
 main = {}
-main['main_text'] = ''
+main['main_text'] = []
 
 
 @app.route("/")
@@ -18,28 +22,38 @@ def home():
 
     main['href'] = 'cmd/scan_wifi'
     main['caption'] = '扫描无线热点'
-    return render_template('home.html', item=main)
+    with app.test_request_context():
+        main['css_file'] = url_for(
+            'static', filename='style.css', q=get_hash())
+    return render_template(currentPage, item=main)
 
 
 @app.route("/cmd/<cmd>")
 def do_cmd(cmd):
-    main['main_text'] = ''
+    main['main_text'] = []
     print(cmd)
     exe_cmd(cmd)
     return redirect('/')
 
 
 def exe_cmd(cmd):
-    if cmd == 'scan_wifi':
+    cmd = cmd.split('+')
+    if cmd[0] == 'scan_wifi':
         for each in Cell.all('wlan0'):
-            print(each.ssid)
-            main['main_text'] += each.ssid + '\n'
-        print(main['main_text'])
-    elif cmd == 'test':
+            main['main_text'].append(
+                {'href': 'cmd/connect+' + each.ssid, 'text': each.ssid})
+    elif cmd[0] == 'test':
         for each in range(0, 10):
-            print(each)
-            main['main_text'] += str(each) + '\n'
-        print(main['main_text'])
+            main['main_text'].append({'href': each, 'text': each})
+    elif cmd[0] == 'connect':
+        print(cmd[1])
+
+
+def get_hash():
+    m = hashlib.md5()
+    m.update(str(time.time()).encode("utf-8"))
+    m.update(str(random.random()).encode("utf-8"))
+    return m.hexdigest()
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=80)
