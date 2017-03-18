@@ -15,7 +15,7 @@ def home():
 @app.route("/cmd/<cmd>")
 def do_cmd(cmd):
     print(cmd)
-    self.exe_cmd(cmd)
+    exe_cmd(cmd)
     return redirect('/')
 
 
