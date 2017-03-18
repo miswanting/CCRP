@@ -20,7 +20,7 @@ def do_cmd(cmd):
 
 
 def exe_cmd(cmd):
-    Cell.all('wlan0')
+    print(Cell.all('wlan0'))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=80)
