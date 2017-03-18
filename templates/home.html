@@ -10,19 +10,23 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1 style="margin-bottom:0;">控制台</h1>
+            <h1>控制台</h1>
         </div>
         <div id="menu">
-            <b>命令</b>
-            <br><a href="{{ item.href }}">{{ item.caption }}</a>
-            <br> 2
-            <br> 3
+            <b>命令</b> {% for cmd in item.cmds %}
+            <li>
+                <a href="{{ cmd.href }}">
+              {{ cmd.text }}
+            </a>
+            </li>{% endfor %}
         </div>
         <div id="content">
+            <pre>
             {{ item.main_text }}
+            </pre>
         </div>
-        <div id="footer" ">
-            版权 © runoob.com
+        <div id="footer">
+            版权 © 何雨航
         </div>
     </div>
 </body>
