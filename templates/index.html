@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>何雨航的控制面板</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./static/style.css"> -->
     <link rel="stylesheet" type="text/css" href="{{ item.css_file }}">
 </head>
 
@@ -24,9 +25,9 @@
             <!-- <pre> -->
             {% for line in item.main_text %}
             <a href="{{ line.href }}">
-            {{ line.text }}
-            {% endfor %}
-            <!-- </pre> -->
+                </br>
+                {{ line.text }} {% endfor %}
+                <!-- </pre> -->
         </div>
         <div id="footer">
             版权 © 何雨航 github.com/miswanting

@@ -15,7 +15,7 @@ def home():
     main['cmds'] = [
         {'href': 'cmd/scan_wifi', 'text': '扫描无线热点'},
         {'href': 'cmd/test', 'text': '测试'},
-        {'href': 'cmd/test', 'text': '测试'},
+        {'href': 'd3', 'text': 'D3测试'},
         {'href': 'cmd/test', 'text': '测试'},
         {'href': 'cmd/test', 'text': '测试'}
     ]
@@ -26,6 +26,14 @@ def home():
         main['css_file'] = url_for(
             'static', filename='style.css', q=get_hash())
     return render_template(currentPage, item=main)
+
+
+@app.route("/d3")
+def d3():
+    with app.test_request_context():
+        main['js_file'] = url_for(
+            'static', filename='d3_test.js', q=get_hash())
+    return render_template('d3.html', item=main)
 
 
 @app.route("/cmd/<cmd>")

@@ -19,14 +19,14 @@ a {
 
 #menu {
     float: left;
-    width: 30%;
+    width: 20%;
     height: 700px;
     background-color: #D1DBBD;
 }
 
 #content {
     float: left;
-    width: 70%;
+    width: 80%;
     height: 700px;
     background-color: #FCFFF5;
 }
