@@ -27,4 +27,4 @@ document.getElementById("footer").style.left = 0;
 document.getElementById("footer").style.right = 0;
 document.getElementById("footer").style.bottom = 0;
 document.getElementById("footer").style.height = "25px";
-alert(window.innerHeight);
+// alert(window.innerHeight);
