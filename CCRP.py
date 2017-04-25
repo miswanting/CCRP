@@ -16,7 +16,7 @@ def home():
         {'href': 'cmd/scan_wifi', 'text': '扫描无线热点'},
         {'href': 'cmd/test', 'text': '测试'},
         {'href': 'd3', 'text': 'D3测试'},
-        {'href': 'cmd/test', 'text': '测试'},
+        {'href': 'person', 'text': 'person'},
         {'href': 'cmd/test', 'text': '测试'}
     ]
 
@@ -42,6 +42,18 @@ def do_cmd(cmd):
     print(cmd)
     exe_cmd(cmd)
     return redirect('/')
+
+
+@app.route("/person")
+def show_person():
+    main['html_title'] = '文档标题'
+    main['css_file'] = url_for('static', filename='person.css', q=get_hash())
+    main['js_file'] = {
+        'chart': url_for('static', filename='Chart.js', q=get_hash()),
+        'person': url_for('static', filename='person.js', q=get_hash())
+    }
+    main['screen_header'] = '人物档案'
+    return render_template('person.html', item=main)
 
 
 def exe_cmd(cmd):
